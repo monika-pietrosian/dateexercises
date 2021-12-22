@@ -1,8 +1,6 @@
-import sys
-import os
+import logging
 import re
 import argparse
-import sys
 from typing import Optional, Sequence
 
 DAYS_IN_MONTH = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
@@ -78,13 +76,16 @@ def validated_date_in_input(user_data: str) -> tuple:
 # Print the result to the user.
 
 def print_results(Date1: Date):
-    print(
+    logging.info(
         f'This year is leap: {Date1.is_year_leap()}. This month is {Date1.month_length()} days long. This is the {Date1.day_of_year()} day of the year')
 
 
 # You enter the date as the first argument from the console
 
 def main_function(argv: Optional[Sequence[str]] = None) -> int:
+    level = logging.INFO
+    fmt = '%(message)s'
+    logging.basicConfig(level=level, format = fmt)
     parser = argparse.ArgumentParser()
     parser.add_argument('user_file')
     args = parser.parse_args(argv)
@@ -96,7 +97,7 @@ def main_function(argv: Optional[Sequence[str]] = None) -> int:
             validation_tuple = validated_date_in_input(date)
             is_valid, validation_output = validation_tuple  # Is the date valid? True or False
             # Returns valid date or the reason it isn't valid
-            print(date)
+            logging.info(date)
 
             if is_valid is False:
                 print(validation_output)
@@ -104,7 +105,7 @@ def main_function(argv: Optional[Sequence[str]] = None) -> int:
                 print_results(validation_output)
 
     except Exception as exception:
-        print('Please provide valid path to a file')
+        logging.info('Please provide valid path to a file')
         return 1
 
 
