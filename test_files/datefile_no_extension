@@ -1,0 +1,12 @@
+python date_interpreter.py 0001-02-28
+python date_interpreter.py 0001-02-29
+python date_interpreter.py 0001-03-01
+python date_interpreter.py 0004-03-01
+python date_interpreter.py 2021/02/28
+python date_interpreter.py 2021/01/01
+python date_interpreter.py 2021/13/01
+python date_interpreter.py 2021/12/01
+python date_interpreter.py 229738742947
+python date_interpreter.py dfsfsfdfsdfs
+
+python date_interpreter.py 2021-77-77
