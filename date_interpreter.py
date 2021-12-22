@@ -85,7 +85,9 @@ def print_results(Date1: Date):
 def main_function(argv: Optional[Sequence[str]] = None) -> int:
     level = logging.INFO
     fmt = '%(message)s'
-    logging.basicConfig(level=level, format = fmt)
+    logging.basicConfig(level=level, format = fmt, handlers=[
+        logging.FileHandler("debug.log"),
+        logging.StreamHandler()])
     parser = argparse.ArgumentParser()
     parser.add_argument('user_file')
     args = parser.parse_args(argv)
@@ -100,7 +102,7 @@ def main_function(argv: Optional[Sequence[str]] = None) -> int:
             logging.info(date)
 
             if is_valid is False:
-                print(validation_output)
+                logging.info(validation_output)
             else:
                 print_results(validation_output)
 
