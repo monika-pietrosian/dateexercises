@@ -3,7 +3,7 @@ import date_interpreter
 
 # Test case X
 
-
+@pytest.mark.skip(reason="no way of currently testing this")
 @pytest.mark.parametrize("file, expected",
                          [(['nofile'], 'Please provide valid path to a file\n'),
                           ])
@@ -11,6 +11,8 @@ def test_parametrized_file_input(capsys, file, expected):
     date_interpreter.main_function(['nofile'])
     output_print = capsys.readouterr()
     assert output_print.out == 'Please provide valid path to a file\n'
+
+# TC-01
 
 
 def test_invalid_file_input(capsys):
@@ -20,7 +22,7 @@ def test_invalid_file_input(capsys):
     assert out == 'Please provide valid path to a file\n'
     assert err == ''
 
-# Test case X
+# TC-02
 
 
 def test_file_no_extension(capsys):
@@ -30,7 +32,7 @@ def test_file_no_extension(capsys):
     assert out == 'Please provide valid path to a file\n'
     assert err == ''
 
-# Test case X
+# TC-03
 
 
 def test_empty_file(capsys):
@@ -40,7 +42,7 @@ def test_empty_file(capsys):
     assert out == 'Please provide valid path to a file\n'
     assert err == ''
 
-# Test case X
+# TC-03
 
 
 def test_valid_file_valid_dates(capsys):
@@ -50,7 +52,7 @@ def test_valid_file_valid_dates(capsys):
     assert out == '0001-02-28\nThis year is leap: False. This month is 28 days long. This is the 59 day of the year\n0001-03-01\nThis year is leap: False. This month is 31 days long. This is the 60 day of the year\n'
     assert err == ''
 
-# Test case X
+# TC-05
 
 
 def test_valid_file_invalid_dates(capsys):
@@ -60,7 +62,7 @@ def test_valid_file_invalid_dates(capsys):
     assert out == '2021-77-77\nMonth has to be in range 1-12\n2021-02-29\nDay cannot be higher than maximum length of days in the month\n'
     assert err == ''
 
-# Test case X
+# TC-06
 
 
 @pytest.mark.skip(reason="no way of currently testing this")
@@ -71,11 +73,11 @@ def test_big_zipped_file(capsys):
     assert out == 'Not yet coded error\n'
     assert err == ''
 
-# Test case X
+# TC-07
 
 
 @pytest.mark.skip(reason="no way of currently testing this")
-def test_big_file(capsys):
+def test_big_txt_file(capsys):
     date_interpreter.main_function([r'test_files\datefile_big.txt'])
 
     out, err = capsys.readouterr()

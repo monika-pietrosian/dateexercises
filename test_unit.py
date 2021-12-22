@@ -1,6 +1,7 @@
 import pytest
 import date_interpreter
 
+# TC-15
 
 @pytest.mark.parametrize("string, expected", [
     (
@@ -12,6 +13,8 @@ def test_finding_all_occurencies(string, expected):
     func_result = date_interpreter.find_all_occurencies(string)
     assert func_result == expected
 
+# TC-16
+
 
 @pytest.mark.parametrize("file, expected", [
     (r'test_files\datefile_invalid_dates.txt',
@@ -20,6 +23,8 @@ def test_finding_all_occurencies(string, expected):
 def test_reading_file(file, expected):
     func_result = date_interpreter.read_file(file)
     assert func_result == expected
+
+# TC-17
 
 
 @pytest.mark.parametrize("string, expected", [
@@ -35,6 +40,8 @@ def test_validate_input(string, expected):
     else:
         assert isinstance == (validation_output, ValueError)
 
+# TC-18
+
 
 def test_printing_results(capsys):
     Date1 = date_interpreter.Date(1, 2, 28)  # 0001-02-28
@@ -42,8 +49,3 @@ def test_printing_results(capsys):
     out, err = capsys.readouterr()
     assert out == 'This year is leap: False. This month is 28 days long. This is the 59 day of the year\n'
     assert err == ''
-
-
-def test_date_class():
-    date_interpreter.Date
-    pass
